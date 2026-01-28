@@ -16,6 +16,7 @@ npm run dev
 
 ### Результаты тестов
 
+```bash
  ✓ src/ParamEditor.test.tsx (4 tests) 463ms
    ✓ ParamEditor (4)
      ✓ отображает все поля по params 40ms
@@ -27,3 +28,4 @@ npm run dev
       Tests  4 passed (4)
    Start at  15:53:00
    Duration  2.09s
+```
