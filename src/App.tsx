@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import ParamEditor from './ParamEditor';
 import type { Param, Model } from './ParamEditor';
+import './App.css';
 
 function App() {
     const editorRef = useRef<ParamEditor>(null);
