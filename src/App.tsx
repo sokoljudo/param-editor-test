@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useRef } from 'react';
+import ParamEditor from './ParamEditor';
+import type { Param, Model } from './ParamEditor';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const editorRef = useRef<ParamEditor>(null);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const params: Param[] = [
+        { id: 1, name: 'Назначение', type: 'string' },
+        { id: 2, name: 'Длина', type: 'string' },
+    ];
+
+    const model: Model = {
+        paramValues: [
+            { paramId: 1, value: 'для дома' },
+            { paramId: 2, value: '' },
+        ],
+    };
+
+    const handleGetModel = () => {
+        if (editorRef.current) {
+            const currentModel = editorRef.current.getModel();
+            console.log('Current model:', currentModel);
+        }
+    };
+
+    return (
+        <div>
+            <ParamEditor ref={editorRef} params={params} model={model} />
+            <button onClick={handleGetModel}>Получить модель</button>
+        </div>
+    );
 }
 
-export default App
+export default App;
